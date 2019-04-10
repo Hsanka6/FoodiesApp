@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,127 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Foodies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cIW-23-iW2">
+                                <rect key="frame" x="15" y="183.5" width="345" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="VdY-WF-h31">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="140"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4S-4Y-Xu0">
+                                                <rect key="frame" x="0.0" y="0.0" width="163" height="140"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.074743433489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cheap Eats">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cheapEats:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EKy-52-OfF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxV-RL-Wcn">
+                                                <rect key="frame" x="182" y="0.0" width="163" height="140"/>
+                                                <color key="backgroundColor" red="0.3294117647" green="0.64705882349999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Trendy Eats">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="trendyEats:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D4J-EN-NN1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="gcl-6c-Zh2">
+                                        <rect key="frame" x="0.0" y="160" width="345" height="140"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rN0-Bb-WTi">
+                                                <rect key="frame" x="0.0" y="0.0" width="163" height="140"/>
+                                                <color key="backgroundColor" red="0.27058823529999998" green="0.70196078429999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Open Now">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="openNowEats:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q46-fF-xdm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2G-Si-PQ7">
+                                                <rect key="frame" x="182" y="0.0" width="163" height="140"/>
+                                                <color key="backgroundColor" red="1" green="0.54117647059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Best Rated">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="bestRatedEats:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mUr-PA-K6p"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="whR-0x-ghP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cIW-23-iW2" secondAttribute="trailing" constant="15" id="A6e-dP-F4n"/>
+                            <constraint firstItem="cIW-23-iW2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="O63-QS-wfb"/>
+                            <constraint firstItem="cIW-23-iW2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rvi-EO-lwi"/>
+                            <constraint firstItem="cIW-23-iW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xZI-G2-kw1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="5HK-au-Tjn" kind="show" identifier="swipe" id="36O-kq-0e2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="131.78410794602701"/>
+        </scene>
+        <!--Swipe View Controller-->
+        <scene sceneID="NQg-3a-OrT">
+            <objects>
+                <viewController id="5HK-au-Tjn" customClass="SwipeViewController" customModule="Foodies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pnt-37-ECh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iF1-LP-FCw" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="15" y="120" width="345" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="woy-gO-H4A"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P74-xc-Ho9">
+                                <rect key="frame" x="67.5" y="50" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="HNH-mP-xQv"/>
+                                    <constraint firstAttribute="width" constant="240" id="qLf-mc-zYW"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KPa-5f-p57" firstAttribute="trailing" secondItem="iF1-LP-FCw" secondAttribute="trailing" constant="15" id="IRE-ga-HTN"/>
+                            <constraint firstItem="iF1-LP-FCw" firstAttribute="leading" secondItem="KPa-5f-p57" secondAttribute="leading" constant="15" id="aYZ-bd-3zI"/>
+                            <constraint firstItem="P74-xc-Ho9" firstAttribute="top" secondItem="KPa-5f-p57" secondAttribute="top" constant="30" id="eva-Co-tVP"/>
+                            <constraint firstItem="iF1-LP-FCw" firstAttribute="top" secondItem="KPa-5f-p57" secondAttribute="top" constant="100" id="n23-4H-g81"/>
+                            <constraint firstItem="P74-xc-Ho9" firstAttribute="centerX" secondItem="pnt-37-ECh" secondAttribute="centerX" id="qx3-dI-czS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KPa-5f-p57"/>
+                    </view>
+                    <connections>
+                        <outlet property="kolodaView" destination="iF1-LP-FCw" id="h0J-Vb-iVd"/>
+                        <outlet property="star" destination="P74-xc-Ho9" id="kfl-OO-ZDw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bi3-b3-ksj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.60000000000002" y="119.1904047976012"/>
         </scene>
     </scenes>
 </document>

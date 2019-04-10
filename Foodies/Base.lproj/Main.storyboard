@@ -108,15 +108,11 @@
                                     <constraint firstAttribute="height" constant="500" id="woy-gO-H4A"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P74-xc-Ho9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P74-xc-Ho9">
                                 <rect key="frame" x="67.5" y="50" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="HNH-mP-xQv"/>
-                                    <constraint firstAttribute="width" constant="240" id="qLf-mc-zYW"/>
-                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KPa-5f-p57" firstAttribute="trailing" secondItem="iF1-LP-FCw" secondAttribute="trailing" constant="15" id="IRE-ga-HTN"/>
                             <constraint firstItem="iF1-LP-FCw" firstAttribute="leading" secondItem="KPa-5f-p57" secondAttribute="leading" constant="15" id="aYZ-bd-3zI"/>

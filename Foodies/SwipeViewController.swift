@@ -33,7 +33,7 @@ class SwipeViewController: UIViewController{
         print("IN SWIPEVIEW CONTROLLER")
         print(filterType)
         print(restaurants.count)
-        star.image = UIImage.yelpStars(numberOfStars: .two, forSize: .regular)
+        star.image = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
         
         //self.view.translatesAutoresizingMaskIntoConstraints = false
         //setUpCards()
@@ -116,8 +116,45 @@ extension SwipeViewController: KolodaViewDataSource{
         customCardView.label.text = restaurants[index].name
         customCardView.starsView.image = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
         customCardView.ratingImage = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
+        if let pri = restaurants[index].price {
+            customCardView.priceLabel.text = getPrice(price: pri)
+        }
+        
+        if let closed = restaurants[index].isClosed {
+            if closed{
+                customCardView.openNow.text = "CLOSED"
+            }
+            customCardView.openNow.text = "OPEN"
+        }
+        
+        
+        
         return customCardView
     }
+    
+    
+    func getPrice(price:String) -> String{
+        var p:String!
+        switch price {
+        case "$":
+            p = "$1 - $10"
+            break
+        case "$$":
+            p = "$11 - $30"
+            break
+        case "$$$":
+            p = "$31 - $60"
+            break
+        case "$$$$":
+            p = "$61+"
+            break
+        default:
+            p = "N/A"
+        }
+        return p
+    }
+    
+    
 
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
         return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView

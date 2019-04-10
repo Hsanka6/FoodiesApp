@@ -3,12 +3,14 @@ import UIKit
 
 class CardView: UIView{
     
+    @IBOutlet var priceLabel: UILabel!
     @IBOutlet var numRatings: UILabel!
     @IBOutlet var label: UILabel!
     @IBOutlet var contentView: UIView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var distanceAway: UILabel!
     @IBOutlet var starsView: UIImageView!
+    @IBOutlet var openNow: UILabel!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
@@ -47,6 +49,16 @@ class CardView: UIView{
     func initSubviews() {
         // standard initialization logic
         let nib = UINib(nibName: "CardView", bundle: nil)
+        
+//        if openNow.text == "CLOSED"{
+//            print("CCCC")
+//        }
+//        else{
+//            print("OOO")
+//        }
+//
+//
+        
         nib.instantiate(withOwner: self, options: nil)
         label.font = UIFont.boldSystemFont(ofSize: 30.0)
         contentView.frame = bounds

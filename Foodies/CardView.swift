@@ -1,5 +1,5 @@
 import UIKit
-
+import Cosmos
 
 class CardView: UIView{
     
@@ -9,8 +9,8 @@ class CardView: UIView{
     @IBOutlet var contentView: UIView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var distanceAway: UILabel!
-    @IBOutlet var starsView: UIImageView!
     @IBOutlet var openNow: UILabel!
+    @IBOutlet var starsView: CosmosView!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
@@ -24,11 +24,6 @@ class CardView: UIView{
     var image: UIImage? {
         get { return imageView.image }
         set { imageView.image = newValue }
-    }
-    
-    var ratingImage: UIImage? {
-        get { return starsView.image }
-        set { starsView.image = newValue }
     }
     
     

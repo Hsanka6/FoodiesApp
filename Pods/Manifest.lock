@@ -5,41 +5,49 @@ PODS:
     - ObjectMapper (~> 3.4)
   - CDYelpFusionKit (1.5.1):
     - AlamofireObjectMapper (= 5.2.0)
+  - Cosmos (18.0.1)
   - Kingfisher (5.3.1)
   - Koloda (4.7):
     - pop (~> 1.0)
   - ObjectMapper (3.4.2)
   - Poi (3.1.0)
   - pop (1.0.12)
+  - SwiftLinter (0.5)
 
 DEPENDENCIES:
   - Alamofire
   - CDYelpFusionKit (= 1.5.1)
+  - Cosmos (~> 18.0)
   - Kingfisher
   - Koloda
   - Poi
+  - SwiftLinter
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - CDYelpFusionKit
+    - Cosmos
     - Kingfisher
     - Koloda
     - ObjectMapper
     - Poi
     - pop
+    - SwiftLinter
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CDYelpFusionKit: 94a7802fa23ef0eb78514c8a6f246f55b6bc91f0
+  Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   Koloda: f456d003d2ce15ef9f10c2874a444f1f570b490c
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Poi: 153f9c751449573ad484dc68b6e4c374cc33d409
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  SwiftLinter: 6dcf4abd84252b83a5e3fd7acc05288b9c2c3a95
 
-PODFILE CHECKSUM: 686f64cb5a25f059b14952b3fca8f3f55dc5ef28
+PODFILE CHECKSUM: fbb384147bc538b10049fa39ae67efeb98403445
 
 COCOAPODS: 1.6.1

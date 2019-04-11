@@ -19,7 +19,7 @@
                 <outlet property="numRatings" destination="PDC-H2-uC7" id="Foi-oM-ZS9"/>
                 <outlet property="openNow" destination="RNt-Yg-FFB" id="0ew-Th-MN8"/>
                 <outlet property="priceLabel" destination="LK7-qj-Iyg" id="Noj-ok-dMM"/>
-                <outlet property="starsView" destination="Oc7-op-5eh" id="ivy-vu-xK0"/>
+                <outlet property="starsView" destination="FGJ-gB-KvA" id="ntA-ZR-Tx5"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -47,27 +47,29 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="62b-Vc-6Bj">
-                    <rect key="frame" x="20" y="76" width="200" height="50"/>
+                    <rect key="frame" x="20" y="76" width="170" height="30"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-op-5eh">
-                            <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
-                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGJ-gB-KvA" customClass="CosmosView" customModule="Cosmos">
+                            <rect key="frame" x="0.0" y="0.0" width="126" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDC-H2-uC7">
-                            <rect key="frame" x="158" y="0.0" width="42" height="50"/>
+                            <rect key="frame" x="128" y="0.0" width="42" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="uLI-af-3Mv"/>
+                        <constraint firstAttribute="height" constant="30" id="dxg-rI-jZ1"/>
+                        <constraint firstAttribute="width" constant="170" id="uLI-af-3Mv"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK7-qj-Iyg">
-                    <rect key="frame" x="275" y="607" width="80" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK7-qj-Iyg">
+                    <rect key="frame" x="235" y="607" width="120" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="6gM-UK-9kf"/>
-                        <constraint firstAttribute="width" constant="80" id="Jnz-gk-nXa"/>
+                        <constraint firstAttribute="width" constant="120" id="Jnz-gk-nXa"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +111,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="120.98950524737631"/>
+        </view>
+        <view contentMode="scaleToFill" id="e5s-5o-NoA">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="uoS-bd-naz"/>
         </view>
     </objects>
 </document>

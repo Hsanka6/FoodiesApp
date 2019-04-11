@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3822953A72E7584FB1EEBA45A7FEDADD"
+               BlueprintIdentifier = "13A829B9578941A57E15FEB825BB2F59"
                BuildableName = "Poi.framework"
                BlueprintName = "Poi"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -60,9 +60,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                                        offset: 0,
                                        sortBy: .rating,
                                        priceTiers: [.oneDollarSign],
-                                       openNow: true,
+                                       openNow: nil,
                                        openAt: nil,
-                                       attributes: nil) { (response) in
+                                       attributes: [.deals]) { (response) in
                                         if let response = response,
                                             let businesses = response.businesses,
                                             businesses.count > 0 {
@@ -101,16 +101,131 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
     
     @IBAction func trendyEats(_ sender: Any) {
         filterType = "TrendyEats"
-        performSegue(withIdentifier: "swipe", sender: self)
+        locationManager.stopUpdatingLocation()
+        guard let longitude = self.lon else {
+            print("Trouble finding your location")
+            return
+        }
+        guard let latitude = self.lat else {
+            print("Trouble finding your location")
+            return
+        }
+        let myGroup = DispatchGroup()
+        myGroup.enter()
+        yelpAPIClient.searchBusinesses(byTerm: "",
+                                       location: "",
+                                       latitude: latitude,
+                                       longitude: longitude,
+                                       radius: 40000,
+                                       categories: [.food],
+                                       locale: .english_unitedStates,
+                                       limit: 25,
+                                       offset: 0,
+                                       sortBy: .rating,
+                                       priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
+                                       openNow: nil,
+                                       openAt: nil,
+                                       attributes: [.hotAndNew]) { (response) in
+                                        if let response = response,
+                                            let businesses = response.businesses,
+                                            businesses.count > 0 {
+                                            self.businesses = response.businesses ?? []
+                                            myGroup.leave()
+                                            
+                                        }
+        }
+        
+        myGroup.notify(queue: .main) {
+            print("Finished all requests. \(self.businesses.count)")
+            self.performSegue(withIdentifier: "swipe", sender: self)
+            //self.setUpCards()
+        }
     }
     
     @IBAction func openNowEats(_ sender: Any) {
         filterType = "OpenNowEats"
-        performSegue(withIdentifier: "swipe", sender: self)
+        locationManager.stopUpdatingLocation()
+        guard let longitude = self.lon else {
+            print("Trouble finding your location")
+            return
+        }
+        guard let latitude = self.lat else {
+            print("Trouble finding your location")
+            return
+        }
+        let myGroup = DispatchGroup()
+        myGroup.enter()
+        yelpAPIClient.searchBusinesses(byTerm: "",
+                                       location: "",
+                                       latitude: latitude,
+                                       longitude: longitude,
+                                       radius: 40000,
+                                       categories: [.food],
+                                       locale: .english_unitedStates,
+                                       limit: 25,
+                                       offset: 0,
+                                       sortBy: .distance,
+                                       priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
+                                       openNow: nil,
+                                       openAt: nil,
+                                       attributes: nil) { (response) in
+                                        if let response = response,
+                                            let businesses = response.businesses,
+                                            businesses.count > 0 {
+                                            self.businesses = response.businesses ?? []
+                                            myGroup.leave()
+                                            
+                                        }
+        }
+        
+        myGroup.notify(queue: .main) {
+            print("Finished all requests. \(self.businesses.count)")
+            self.performSegue(withIdentifier: "swipe", sender: self)
+            //self.setUpCards()
+        }
     }
     @IBAction func bestRatedEats(_ sender: Any) {
         filterType = "bestRatedEats"
-        performSegue(withIdentifier: "swipe", sender: self)
+        locationManager.stopUpdatingLocation()
+        guard let longitude = self.lon else {
+            print("Trouble finding your location")
+            return
+        }
+        guard let latitude = self.lat else {
+            print("Trouble finding your location")
+            return
+        }
+        let myGroup = DispatchGroup()
+        myGroup.enter()
+        yelpAPIClient.searchBusinesses(byTerm: "",
+                                       location: "",
+                                       latitude: latitude,
+                                       longitude: longitude,
+                                       radius: 40000,
+                                       categories: [.food],
+                                       locale: .english_unitedStates,
+                                       limit: 25,
+                                       offset: 0,
+                                       sortBy: .rating,
+                                       priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
+                                       openNow: nil,
+                                       openAt: nil,
+                                       attributes: nil) { (response) in
+                                        if let response = response,
+                                            let businesses = response.businesses,
+                                            businesses.count > 0 {
+                                            
+                                            self.businesses = response.businesses ?? []
+                                            myGroup.leave()
+                                            
+                                        }
+        }
+        
+        myGroup.notify(queue: .main) {
+            print("Finished all requests. \(self.businesses.count)")
+            self.performSegue(withIdentifier: "swipe", sender: self)
+            //self.setUpCards()
+        }
     }
     
     var sampleCards = [UIView]()
@@ -118,7 +233,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
     var v = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
    
     
-    @IBOutlet var expand: UIButton!
     
     @IBAction func expander(_ sender: Any) {
 //        UIView.animate(withDuration: 5) {
@@ -126,9 +240,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
 //        }
         let viewWidth = self.view.frame.width
         let viewHeight = self.view.frame.height
-        
-        
-        
         
         UIView.animate(withDuration: 5) {
             self.v.frame = CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight)
@@ -140,6 +251,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
 //        setUpPoi()
         print("IN VIEW CONTROLLER")
         locationSetup()
+        
+        navigationItem.hidesBackButton = true
+        
+        navigationController?.navigationBar.isUserInteractionEnabled = false
 
 
 //        poiView.dataSource = self
@@ -188,6 +303,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                 print("in prepare \(self.businesses.count)")
                 swipeController.filterType = self.filterType
                 swipeController.restaurants = self.businesses
+                swipeController.latitude = self.lat
+                swipeController.longitude = self.lon
                 //swipeController.cards = self.cards
             }
         }
@@ -207,48 +324,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
         print("Location Error \(error)")
     }
     
-    
-    
-//    // MARK: PoiViewDataSource
-//    func numberOfCards(_ poi: PoiView) -> Int {
-//        return 2
-//    }
-//
-//    func poi(_ poi: PoiView, viewForCardAt index: Int) -> UIView {
-//        return sampleCards[index]
-//    }
-//
-//    func poi(_ poi: PoiView, viewForCardOverlayFor direction: SwipeDirection) -> UIImageView? {
-//        switch direction {
-//        case .right:
-//            return UIImageView(image: UIImage(named: "haas"))
-//        case .left:
-//            return UIImageView(image: UIImage(named: "haas"))
-//        }
-//    }
-//
-//    // MARK: PoiViewDelegate
-//    func poi(_ poi: PoiView, didSwipeCardAt: Int, in direction: SwipeDirection) {
-//        switch direction {
-//        case .left:
-//            print("left")
-//        case .right:
-//            print("right")
-//        }
-//    }
-//
-//    func poi(_ poi: PoiView, runOutOfCardAt: Int, in direction: SwipeDirection) {
-//        print("last")
-//    }
-//
-//    // MARK: IBAction
-//    @IBAction func OKAction(_ sender: UIButton) {
-//        poiView.swipeCurrentCard(to: .right)
-//    }
-//
-//    @IBAction func undo(_ sender: UIButton) {
-//        poiView.undo()
-//    }
+
 
 
 }

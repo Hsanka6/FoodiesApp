@@ -10,6 +10,9 @@ target 'Foodies' do
   pod 'Alamofire'
   pod "Koloda"
   pod "Kingfisher"
+  pod 'Cosmos', '~> 18.0'
+  pod 'SwiftLinter'
+
   # Pods for Foodies
 
   target 'FoodiesTests' do

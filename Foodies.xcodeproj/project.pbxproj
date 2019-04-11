@@ -19,6 +19,7 @@
 		7075659C22480A2A006B3A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7075659A22480A2A006B3A80 /* LaunchScreen.storyboard */; };
 		707565A722480A2A006B3A80 /* FoodiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707565A622480A2A006B3A80 /* FoodiesTests.swift */; };
 		707565B222480A2A006B3A80 /* FoodiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707565B122480A2A006B3A80 /* FoodiesUITests.swift */; };
+		70D69345225F24A5008A87E2 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D69344225F24A5008A87E2 /* FavoritesViewController.swift */; };
 		70F27EF62250A163007FB415 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F27EF52250A163007FB415 /* CardView.swift */; };
 		83A7A587477C72D68AF8253E /* Pods_FoodiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865629F3A6BF1A3EA88A3FED /* Pods_FoodiesTests.framework */; };
 		E7A60E142C32D5575A26CBA2 /* Pods_FoodiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A5B069639407093FFF50B1 /* Pods_FoodiesUITests.framework */; };
@@ -61,6 +62,7 @@
 		707565AD22480A2A006B3A80 /* FoodiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		707565B122480A2A006B3A80 /* FoodiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodiesUITests.swift; sourceTree = "<group>"; };
 		707565B322480A2A006B3A80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70D69344225F24A5008A87E2 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		70F27EF52250A163007FB415 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7E00D056D75D744686B8C681 /* Pods_Foodies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8154201DCEBE703FE476534E /* Pods-FoodiesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodiesUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodiesUITests/Pods-FoodiesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				70F27EF52250A163007FB415 /* CardView.swift */,
 				7066D9A82250A4C1000CBCE2 /* CardView.xib */,
 				7066D9AA2250ADFB000CBCE2 /* OverlayView.xib */,
+				70D69344225F24A5008A87E2 /* FavoritesViewController.swift */,
 			);
 			path = Foodies;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -404,6 +408,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -426,6 +431,7 @@
 				70181A51224F755600B81C5E /* Restaurant.swift in Sources */,
 				7075659422480A28006B3A80 /* ViewController.swift in Sources */,
 				7075659222480A28006B3A80 /* AppDelegate.swift in Sources */,
+				70D69345225F24A5008A87E2 /* FavoritesViewController.swift in Sources */,
 				70181A4F224F607100B81C5E /* SwipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,7 +608,9 @@
 			baseConfigurationReference = 2DEC206B0DBB69837C791E8A /* Pods-Foodies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Foodies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +618,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haasith.Foodies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -620,7 +629,9 @@
 			baseConfigurationReference = A4FFE5035BD90418E73C1427 /* Pods-Foodies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Foodies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,6 +639,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haasith.Foodies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

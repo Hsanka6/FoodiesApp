@@ -13,10 +13,13 @@ import Kingfisher
 
 class SwipeViewController: UIViewController{
     
-    @IBOutlet var star: UIImageView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     @IBOutlet var kolodaView: KolodaView!
-    var filterType:String!
+    var filterType:String?
     var restaurants = [CDYelpBusiness]()
+    var latitude:Double?
+    var longitude:Double?
+    
     var yelpAPIClient = CDYelpAPIClient(apiKey: "k5KiWZD_LBkDD0npV2vMPY8Hriq5MfWgHU2JtXlXMoM1qoYST2a8r8aIVEar9uCDCAwH8WH0t-J5ccwoD5J53iBGjwbA1ACSPdvvQvyC5sCOgUSXSYQnMY_bWi0wXHYx")
 
 //    fileprivate var dataSource: [UIImage] = {
@@ -31,40 +34,47 @@ class SwipeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("IN SWIPEVIEW CONTROLLER")
-        print(filterType)
+        //print(filterType)
         print(restaurants.count)
-        star.image = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
-        
-        //self.view.translatesAutoresizingMaskIntoConstraints = false
-        //setUpCards()
-        for bus in restaurants{
-            print(bus.name)
-        }
-        
+        indicator.isHidden = true
+
         
         kolodaView.dataSource = self
         kolodaView.delegate = self
-        switch filterType {
-            case "CheapEats":
-                cheapEats()
-                break
-            case "OpenNowEats":
-                openNowEats()
-                break
-            case "TrendyEats":
-                trendyEats()
-                break
-            case "BestRatedEats":
-                bestRatedEats()
-                break
-            default:
-                bestRatedEats()
-        }
+       
         //cheap eats(search by price),trendy eats, best rated,open now
        
     }
     
     func cheapEats(){
+        yelpAPIClient.searchBusinesses(byTerm: "",
+                                       location: "",
+                                       latitude: latitude ?? 32.7,
+                                       longitude: longitude ?? 117.16,
+                                       radius: 40000,
+                                       categories: [.food],
+                                       locale: .english_unitedStates,
+                                       limit: 20,
+                                       offset: 20,
+                                       sortBy: .rating,
+                                       priceTiers: [.oneDollarSign],
+                                       openNow: nil,
+                                       openAt: nil,
+                                       attributes: [.deals]) { (response) in
+                                        if let response = response,
+                                            let businesses = response.businesses,
+                                            businesses.count > 0 {
+                                            for bus in businesses{
+                                                self.restaurants.append(bus)
+                                            }
+                                            self.indicator.stopAnimating()
+                                        }
+                                        else{
+                                            print("No more businesses found")
+                                        }
+        }
+        
+        
     }
     func openNowEats(){
     }
@@ -75,27 +85,47 @@ class SwipeViewController: UIViewController{
     func trendyEats(){
         
     }
-
+    @IBAction func swipeRight(_ sender: Any) {
+        kolodaView.swipe(.right)
+    }
+    
+    @IBAction func swipeLeft(_ sender: Any) {
+        kolodaView.swipe(.left)
+    }
+    
+    
 }
 
 extension SwipeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-//        let position = kolodaView.currentCardIndex
-//        for _ in 1...4 {
-//            dataSource.append(UIImage(named: "haas")!)
-//        }
-        //kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
-        //kolodaView.reloadData()
+        indicator.isHidden = false
+        indicator.startAnimating()
+        switch filterType {
+        case "CheapEats":
+            cheapEats()
+            break
+        case "OpenNowEats":
+            openNowEats()
+            break
+        case "TrendyEats":
+            trendyEats()
+            break
+        case "BestRatedEats":
+            bestRatedEats()
+            break
+        default:
+            bestRatedEats()
+        }
     }
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
         performSegue(withIdentifier: "moreDetail", sender: self)
     }
 }
 extension SwipeViewController: KolodaViewDataSource{
 
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return 20
+        return restaurants.count
     }
 
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -114,8 +144,11 @@ extension SwipeViewController: KolodaViewDataSource{
         customCardView.distanceAway.text = strMiles + " mi"
         customCardView.numRatings.text = "(" + String(describing: restaurants[index].reviewCount!) + ")"
         customCardView.label.text = restaurants[index].name
-        customCardView.starsView.image = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
-        customCardView.ratingImage = UIImage.yelpStars(numberOfStars: .two, forSize: .small)
+        customCardView.starsView.settings.fillMode = .half
+        if let rat = restaurants[index].rating{
+            customCardView.starsView.rating = rat
+        }
+        
         if let pri = restaurants[index].price {
             customCardView.priceLabel.text = getPrice(price: pri)
         }

@@ -1,34 +1,29 @@
 //
-//  FavoritesViewController.swift
+//  TabBarViewController.swift
 //  Foodies
 //
-//  Created by Haasith Sanka on 4/11/19.
+//  Created by Haasith Sanka on 5/3/19.
 //  Copyright © 2019 Haasith Sanka. All rights reserved.
 //
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class TabBarViewController: UITabBarController {
 
+    
+    var savedRestaurants = [Int]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let kUserDefault = UserDefaults.standard
-//
-//        let data = kUserDefault.array(forKey: "favorites")! as? [String] ?? [String]()
-//        print(data)
-
+        //need to access index 1 since vc's are stored in tabbarcontroller starting with 0, so 1 to access 2nd vc.
+//        if (tabBarViewControllers.indices.contains(1)) {
+//            if let vc2 = tabBarViewControllers[1] as? VC2Class {
+//                vc2.stringIWantToSet = stringToSet
+//            }
+//        }
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let kUserDefault = UserDefaults.standard
-        
-        let data = kUserDefault.array(forKey: "favorites")! as? [String] ?? [String]()
-        print(data)
 
-    }
-    
-    
     /*
     // MARK: - Navigation
 

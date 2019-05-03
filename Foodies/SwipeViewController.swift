@@ -131,6 +131,21 @@ extension SwipeViewController: KolodaViewDataSource{
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
         return .fast
     }
+    
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        if(direction == .right || direction == .topRight || direction == .bottomRight || direction == .up){
+            print("swiped right")
+            let kUserDefault = UserDefaults.standard
+            var data = kUserDefault.array(forKey: "favorites")! as? [String] ?? [String]()
+//            if(data == nil){
+//                data = []()
+//            }
+            data.append(restaurants[index].id!)
+            kUserDefault.set(data, forKey: "favorites")
+            kUserDefault.synchronize()
+        }
+    }
 
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let customCardView = CardView(frame: CGRect(x: 0, y: 0, width: 200, height: 400))
@@ -186,6 +201,8 @@ extension SwipeViewController: KolodaViewDataSource{
         }
         return p
     }
+    
+    
     
     
 

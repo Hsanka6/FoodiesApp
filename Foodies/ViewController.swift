@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Poi
 import CDYelpFusionKit
 import CoreLocation
 import Kingfisher
@@ -54,15 +53,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                                        latitude: latitude,
                                        longitude: longitude,
                                        radius: 40000,
-                                       categories: [.food],
+                                       categories: [.food, .restaurants, .fastFood],
                                        locale: .english_unitedStates,
-                                       limit: 20,
+                                       limit: 50,
                                        offset: 0,
-                                       sortBy: .rating,
+                                       sortBy: .distance,
                                        priceTiers: [.oneDollarSign],
                                        openNow: nil,
                                        openAt: nil,
-                                       attributes: [.deals]) { (response) in
+                                       attributes: nil) { (response) in
                                         if let response = response,
                                             let businesses = response.businesses,
                                             businesses.count > 0 {
@@ -117,9 +116,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                                        latitude: latitude,
                                        longitude: longitude,
                                        radius: 40000,
-                                       categories: [.food],
+                                       categories: [.food, .restaurants, .fastFood],
                                        locale: .english_unitedStates,
-                                       limit: 25,
+                                       limit: 50,
                                        offset: 0,
                                        sortBy: .rating,
                                        priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
@@ -160,9 +159,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                                        latitude: latitude,
                                        longitude: longitude,
                                        radius: 40000,
-                                       categories: [.food],
+                                       categories: [.food, .restaurants, .fastFood],
                                        locale: .english_unitedStates,
-                                       limit: 25,
+                                       limit: 50,
                                        offset: 0,
                                        sortBy: .distance,
                                        priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
@@ -202,9 +201,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
                                        latitude: latitude,
                                        longitude: longitude,
                                        radius: 40000,
-                                       categories: [.food],
+                                       categories: [.food, .restaurants, .fastFood],
                                        locale: .english_unitedStates,
-                                       limit: 25,
+                                       limit: 50,
                                        offset: 0,
                                        sortBy: .rating,
                                        priceTiers: [.oneDollarSign, .twoDollarSigns, .threeDollarSigns,.fourDollarSigns],
@@ -229,7 +228,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
     }
     
     var sampleCards = [UIView]()
-    var poiView = PoiView()
+   // var poiView = PoiView()
     var v = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
    
     
@@ -251,6 +250,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
 //        setUpPoi()
         print("IN VIEW CONTROLLER")
         locationSetup()
+        let kUserDefault = UserDefaults.standard
+        let arr = [String]()
+        kUserDefault.set(arr, forKey: "favorites")
+        kUserDefault.synchronize()
         
         navigationItem.hidesBackButton = true
         
@@ -274,28 +277,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
         }
     }
     
-    func setUpPoi(){
-        let viewWidth = self.view.frame.width
-        let viewHeight = self.view.frame.height
-        
-        poiView.frame = CGRect(x: 0, y: 0, width: viewWidth - 200, height: viewHeight-200)
-        
-        v.backgroundColor = UIColor.blue
-        var colors = [UIColor.red, UIColor.orange]
-        for i in (0..<2) {
-            let myView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-            
-            
-            //UIView(frame: CGRect(x: 0, y: 0, width: 240, height: 128))
-            sampleCards.append(myView)
-            sampleCards[i].backgroundColor = colors[i]
-        }
-        self.view.addSubview(poiView)
-        
-        self.view.addSubview(v)
-        
-    }
-    
+//    func setUpPoi(){
+//        let viewWidth = self.view.frame.width
+//        let viewHeight = self.view.frame.height
+//
+//        poiView.frame = CGRect(x: 0, y: 0, width: viewWidth - 200, height: viewHeight-200)
+//
+//        v.backgroundColor = UIColor.blue
+//        var colors = [UIColor.red, UIColor.orange]
+//        for i in (0..<2) {
+//            let myView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//
+//
+//            //UIView(frame: CGRect(x: 0, y: 0, width: 240, height: 128))
+//            sampleCards.append(myView)
+//            sampleCards[i].backgroundColor = colors[i]
+//        }
+//        self.view.addSubview(poiView)
+//
+//        self.view.addSubview(v)
+//
+//    }
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "swipe"
         {
@@ -315,7 +318,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{//, PoiViewDat
         if let locValue:CLLocationCoordinate2D = manager.location?.coordinate{
             self.lat = locValue.latitude
             self.lon = locValue.longitude
-            
+            print("lat is \(locValue.latitude) and lon is \(locValue.longitude)")
         }
     }
     

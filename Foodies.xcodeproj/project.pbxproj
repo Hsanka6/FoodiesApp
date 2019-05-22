@@ -10,8 +10,8 @@
 		0B846C34830486E3F7DEB934 /* Pods_Foodies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E00D056D75D744686B8C681 /* Pods_Foodies.framework */; };
 		70181A4F224F607100B81C5E /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70181A4E224F607100B81C5E /* SwipeViewController.swift */; };
 		70181A51224F755600B81C5E /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70181A50224F755600B81C5E /* Restaurant.swift */; };
+		702153B52294D35B00AC809A /* FavoriteRestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702153B42294D35B00AC809A /* FavoriteRestaurantCell.swift */; };
 		7055844A227C3ABC008FE6F8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70558449227C3ABC008FE6F8 /* TabBarViewController.swift */; };
-		7055844C227C3C4D008FE6F8 /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7055844B227C3C4D008FE6F8 /* FavoritesList.swift */; };
 		7066D9A92250A4C1000CBCE2 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7066D9A82250A4C1000CBCE2 /* CardView.xib */; };
 		7066D9AB2250ADFB000CBCE2 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7066D9AA2250ADFB000CBCE2 /* OverlayView.xib */; };
 		7075659222480A28006B3A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7075659122480A28006B3A80 /* AppDelegate.swift */; };
@@ -49,8 +49,8 @@
 		2DEC206B0DBB69837C791E8A /* Pods-Foodies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodies.debug.xcconfig"; path = "Target Support Files/Pods-Foodies/Pods-Foodies.debug.xcconfig"; sourceTree = "<group>"; };
 		70181A4E224F607100B81C5E /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		70181A50224F755600B81C5E /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		702153B42294D35B00AC809A /* FavoriteRestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurantCell.swift; sourceTree = "<group>"; };
 		70558449227C3ABC008FE6F8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		7055844B227C3C4D008FE6F8 /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
 		7066D9A82250A4C1000CBCE2 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		7066D9AA2250ADFB000CBCE2 /* OverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		7075658E22480A28006B3A80 /* Foodies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +156,7 @@
 				7066D9AA2250ADFB000CBCE2 /* OverlayView.xib */,
 				70D69344225F24A5008A87E2 /* FavoritesViewController.swift */,
 				70558449227C3ABC008FE6F8 /* TabBarViewController.swift */,
-				7055844B227C3C4D008FE6F8 /* FavoritesList.swift */,
+				702153B42294D35B00AC809A /* FavoriteRestaurantCell.swift */,
 			);
 			path = Foodies;
 			sourceTree = "<group>";
@@ -435,12 +435,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702153B52294D35B00AC809A /* FavoriteRestaurantCell.swift in Sources */,
 				70F27EF62250A163007FB415 /* CardView.swift in Sources */,
 				70181A51224F755600B81C5E /* Restaurant.swift in Sources */,
 				7075659422480A28006B3A80 /* ViewController.swift in Sources */,
 				7075659222480A28006B3A80 /* AppDelegate.swift in Sources */,
 				7055844A227C3ABC008FE6F8 /* TabBarViewController.swift in Sources */,
-				7055844C227C3C4D008FE6F8 /* FavoritesList.swift in Sources */,
 				70D69345225F24A5008A87E2 /* FavoritesViewController.swift in Sources */,
 				70181A4F224F607100B81C5E /* SwipeViewController.swift in Sources */,
 			);

@@ -118,7 +118,6 @@ extension SwipeViewController: KolodaViewDelegate {
         }
     }
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
         performSegue(withIdentifier: "moreDetail", sender: self)
     }
 }
@@ -135,7 +134,6 @@ extension SwipeViewController: KolodaViewDataSource{
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         if(direction == .right || direction == .topRight || direction == .bottomRight || direction == .up){
-            print("swiped right")
             let kUserDefault = UserDefaults.standard
             var data = kUserDefault.array(forKey: "favorites")! as? [String] ?? [String]()
 //            if(data == nil){
@@ -150,57 +148,12 @@ extension SwipeViewController: KolodaViewDataSource{
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let customCardView = CardView(frame: CGRect(x: 0, y: 0, width: 200, height: 400))
         self.view.addSubview(customCardView)
-        //return UIImageView(image: dataSource[index])
-        customCardView.imageView.kf.setImage(with: restaurants[index].imageUrl)
-       // customCardView.ratingImage?.kf.setImage(with:restaurants[index].)
-        
-        let milesAway = restaurants[index].distance!/1609.344
-        let strMiles = String(format: "%.1f", milesAway)
-        customCardView.distanceAway.text = strMiles + " mi"
-        customCardView.numRatings.text = "(" + String(describing: restaurants[index].reviewCount!) + ")"
-        customCardView.label.text = restaurants[index].name
-        customCardView.starsView.settings.fillMode = .half
-        if let rat = restaurants[index].rating{
-            customCardView.starsView.rating = rat
-        }
-        
-        if let pri = restaurants[index].price {
-            customCardView.priceLabel.text = getPrice(price: pri)
-        }
-        
-        if let closed = restaurants[index].isClosed {
-            if closed{
-                customCardView.openNow.text = "CLOSED"
-            }
-            customCardView.openNow.text = "OPEN"
-        }
-        
-        
-        
+        customCardView.setUpCard(business: restaurants[index])
         return customCardView
     }
     
     
-    func getPrice(price:String) -> String{
-        var p:String!
-        switch price {
-        case "$":
-            p = "$1 - $10"
-            break
-        case "$$":
-            p = "$11 - $30"
-            break
-        case "$$$":
-            p = "$31 - $60"
-            break
-        case "$$$$":
-            p = "$61+"
-            break
-        default:
-            p = "N/A"
-        }
-        return p
-    }
+  
     
     
     
